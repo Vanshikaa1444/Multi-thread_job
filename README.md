@@ -1,24 +1,23 @@
-Multi-threaded Job Scheduler
-A production-ready Java implementation of a thread-safe job scheduler with priority-based execution, semaphore-controlled concurrency, and delayed job scheduling capabilities.
-Features
+# Java Multi-threaded Job Scheduler
 
-Thread Pool Management: Configurable core and maximum thread pools with named worker threads
-Priority-based Execution: Jobs execute in priority order (higher numbers = higher priority)
-Semaphore Control: Limits concurrent job execution to prevent system overload
-Delayed Job Scheduling: Schedule jobs to execute after a specified delay
-Real-time Monitoring: Comprehensive statistics and metrics
-Graceful Shutdown: Proper resource cleanup and job completion handling
-Thread Safety: All operations are thread-safe using concurrent data structures
+A fully-featured **Job Scheduler** built in Java using core concurrency primitives. It supports:
 
-Architecture Overview
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Job Submit    │───▶│  Priority Queue  │───▶│  Job Processor  │
-│                 │    │                  │    │     Thread      │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                                                        │
-                                                        ▼
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│ Delayed Jobs    │    │    Semaphore     │    │  Thread Pool    │
-│   Scheduler     │    │   (Concurrency   │    │   Executor      │
-│                 │    │    Control)      │    │                 │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
+- Priority-based job execution
+- Delayed job scheduling
+- Maximum concurrency limits using semaphores
+- Dynamic thread pool
+- Real-time job monitoring
+- Graceful shutdown
+
+
+
+## Features
+
+ **Priority Queue**: Higher-priority jobs are executed first.
+ **Delay Scheduling**: Jobs can be delayed using `ScheduledExecutorService`.
+ **Concurrency Control**: Limits the number of simultaneously executing jobs using `Semaphore`.
+ **Thread Pool Execution**: Uses a configurable `ThreadPoolExecutor` for job execution.
+ **Live Metrics**: Tracks active, queued, submitted, and completed jobs.
+ **Graceful Shutdown**: Waits for ongoing tasks to complete before shutting down.
+
+
